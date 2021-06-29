@@ -23,11 +23,17 @@
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gDX-4x-P33"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pct-Vj-vXQ" userLabel="Routes button">
+                                <rect key="frame" x="164.5" y="483" width="85" height="30"/>
+                                <state key="normal" title="Go to routes"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Pct-Vj-vXQ" firstAttribute="top" secondItem="7li-OA-5dz" secondAttribute="bottom" constant="20" id="6UO-iR-vmT"/>
                             <constraint firstItem="7li-OA-5dz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bhk-O9-Jgz"/>
+                            <constraint firstItem="Pct-Vj-vXQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C5d-kd-F2P"/>
                             <constraint firstItem="7li-OA-5dz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uaS-tp-qAI"/>
                         </constraints>
                     </view>

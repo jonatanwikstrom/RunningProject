@@ -17,7 +17,6 @@
 		B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0726847A92008E2F73 /* secondViewController.swift */; };
 		B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */; };
 		B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */; };
-		B8CFAC0E268492E9008E2F73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0D268492E9008E2F73 /* LocationManager.swift */; };
 		B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		B8CFAC0726847A92008E2F73 /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdViewController.swift; sourceTree = "<group>"; };
 		B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B8CFAC0D268492E9008E2F73 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +77,6 @@
 				B8CFAC01268477DA008E2F73 /* Info.plist */,
 				B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */,
 				B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */,
-				B8CFAC0D268492E9008E2F73 /* LocationManager.swift */,
 				B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */,
 			);
 			path = RunningProject;
@@ -159,7 +156,6 @@
 				B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */,
 				B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */,
 				B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */,
-				B8CFAC0E268492E9008E2F73 /* LocationManager.swift in Sources */,
 				B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */,
 				B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */,
 				B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */,

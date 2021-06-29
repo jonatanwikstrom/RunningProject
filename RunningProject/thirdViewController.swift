@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class thirdViewController: UIViewController {
 
@@ -15,11 +16,15 @@ class thirdViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var run: Run!
+    var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView.delegate = self
         updateRun()
+        
     }
+    
     
     func updateRun(){
         
@@ -29,16 +34,11 @@ class thirdViewController: UIViewController {
         
         distanceLabel.text = "Distance:  \(distance)"
         timeLabel.text = "Time:  \(formattedTime)"
-        
-        //loadMap()
-        drawLine()
-        
-    }
-    
-    func drawLine(){
-        
+        loadMap()
+
         
     }
+
     
     private func mapRegion() -> MKCoordinateRegion? {
       guard
@@ -47,7 +47,7 @@ class thirdViewController: UIViewController {
       else {
         return nil
       }
-        
+    
       let latitudes = locations.map { location -> Double in
         let location = location as! Location
         return location.latitude
@@ -65,9 +65,11 @@ class thirdViewController: UIViewController {
         
       let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
                                           longitude: (minLong + maxLong) / 2)
-      let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
+      let largerSpan = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
                                   longitudeDelta: (maxLong - minLong) * 1.3)
-      return MKCoordinateRegion(center: center, span: span)
+        
+        
+      return MKCoordinateRegion(center: center, span: largerSpan)
     }
     
     private func polyLine() -> MKPolyline {
@@ -79,8 +81,10 @@ class thirdViewController: UIViewController {
         let location = location as! Location
         return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
       }
+    
       return MKPolyline(coordinates: coords, count: coords.count)
     }
+
     
     private func loadMap() {
       guard
@@ -98,20 +102,35 @@ class thirdViewController: UIViewController {
         
       mapView.setRegion(region, animated: true)
       mapView.addOverlay(polyLine())
+       
  
     }
+    
     
     
   }
 
   extension thirdViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-      guard let polyline = overlay as? MKPolyline else {
-        return MKOverlayRenderer(overlay: overlay)
-      }
-      let renderer = MKPolylineRenderer(polyline: polyline)
-      renderer.strokeColor = .black
+
+   if let routePolyline = overlay as? MKPolyline {
+      let renderer = MKPolylineRenderer(polyline: routePolyline)
+      renderer.strokeColor = UIColor.blue.withAlphaComponent(0.9)
       renderer.lineWidth = 3
       return renderer
     }
+    return MKOverlayRenderer()
   }
+  }
+
+extension thirdViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+          if let lastLocation = locations.last {
+
+            let region = MKCoordinateRegion(center: lastLocation.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+          }
+        }
+    }

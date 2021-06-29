@@ -18,17 +18,26 @@ class secondViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var run: Run!
-    let manager = LocationManager.shared
+    let manager = CLLocationManager()
     var timer:Timer?
-    
+    var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var seconds = 0
     var distance = Measurement(value: 0, unit: UnitLength.meters)
     var locationList: [CLLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        manager.startUpdatingLocation()
+        self.mapView.delegate = self
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+ 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,18 +46,7 @@ class secondViewController: UIViewController {
       manager.stopUpdatingLocation()
     }
 
-    
-    func currentPosition(_ location: CLLocation){
-        
-        let MyCoordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        
-        let region = MKCoordinateRegion(center: MyCoordinate, span: span)
-        mapView.setRegion(region, animated: true)
 
-        mapView.showsUserLocation = true
-        
-    }
     
     
     
@@ -96,8 +94,6 @@ class secondViewController: UIViewController {
     }
     
     func startLocationUpdates() {
-      manager.desiredAccuracy = kCLLocationAccuracyBest
-      manager.delegate = self
       manager.activityType = .fitness
       manager.distanceFilter = 10
       manager.startUpdatingLocation()
@@ -110,39 +106,55 @@ class secondViewController: UIViewController {
     }
     
     func saveProgress(){
-        let newRun = Run(context: CoreDataStack.context)
-        newRun.distance = distance.value
-        newRun.duration = Int16(seconds)
+        let newStat = Run(context: CoreDataStack.context)
+        newStat.distance = distance.value
+        newStat.duration = Int16(seconds)
         
         for location in locationList {
-          let locationObject = Location(context: CoreDataStack.context)
-          locationObject.latitude = location.coordinate.latitude
-          locationObject.longitude = location.coordinate.longitude
-          newRun.addToLocations(locationObject)
+          let locStat = Location(context: CoreDataStack.context)
+          locStat.latitude = location.coordinate.latitude
+          locStat.longitude = location.coordinate.longitude
+          newStat.addToLocations(locStat)
         }
         
         CoreDataStack.saveContext()
         
-        run = newRun
+        run = newStat
+    }
+    
+    func currentLocUpdate(_ location: CLLocation){
+        
+        let MyCoordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: MyCoordinate, span: span)
+        
+        mapView.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
+        
     }
 
 }
 
 extension secondViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    guard let polyline = overlay as? MKPolyline else {
-      return MKOverlayRenderer(overlay: overlay)
-    }
-    let renderer = MKPolylineRenderer(polyline: polyline)
-    renderer.strokeColor = .blue
+
+ if let routePolyline = overlay as? MKPolyline {
+    let renderer = MKPolylineRenderer(polyline: routePolyline)
+    renderer.strokeColor = UIColor.blue.withAlphaComponent(0.9)
     renderer.lineWidth = 3
     return renderer
   }
+  return MKOverlayRenderer()
+}
 }
 
 extension secondViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let currentLocation = locations.first{
+            currentLocUpdate(currentLocation)
+        }
+        
         for newLocation in locations {
           let howRecent = newLocation.timestamp.timeIntervalSinceNow
           guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
@@ -152,10 +164,7 @@ extension secondViewController: CLLocationManagerDelegate {
             distance = distance + Measurement(value: delta, unit: UnitLength.meters)
             let coordinates = [lastLocation.coordinate, newLocation.coordinate]
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: newLocation.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-            currentPosition(lastLocation)
+
           }
           
           locationList.append(newLocation)
