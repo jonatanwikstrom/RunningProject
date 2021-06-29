@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF0268477D7008E2F73 /* AppDelegate.swift */; };
 		B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */; };
-		B8CFABF5268477D7008E2F73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF4268477D7008E2F73 /* ViewController.swift */; };
+		B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF4268477D7008E2F73 /* firstViewController.swift */; };
 		B8CFABF8268477D7008E2F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CFABF6268477D7008E2F73 /* Main.storyboard */; };
 		B8CFABFB268477D7008E2F73 /* RunningProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */; };
 		B8CFABFD268477DA008E2F73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CFABFC268477DA008E2F73 /* Assets.xcassets */; };
 		B8CFAC00268477DA008E2F73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CFABFE268477DA008E2F73 /* LaunchScreen.storyboard */; };
+		B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0726847A92008E2F73 /* secondViewController.swift */; };
+		B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */; };
+		B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */; };
+		B8CFAC0E268492E9008E2F73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0D268492E9008E2F73 /* LocationManager.swift */; };
+		B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B8CFABED268477D7008E2F73 /* RunningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CFABF0268477D7008E2F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B8CFABF4268477D7008E2F73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B8CFABF4268477D7008E2F73 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		B8CFABF7268477D7008E2F73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8CFABFA268477D7008E2F73 /* RunningProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningProject.xcdatamodel; sourceTree = "<group>"; };
 		B8CFABFC268477DA008E2F73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8CFABFF268477DA008E2F73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8CFAC01268477DA008E2F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8CFAC0726847A92008E2F73 /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
+		B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdViewController.swift; sourceTree = "<group>"; };
+		B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B8CFAC0D268492E9008E2F73 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +70,17 @@
 			children = (
 				B8CFABF0268477D7008E2F73 /* AppDelegate.swift */,
 				B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */,
-				B8CFABF4268477D7008E2F73 /* ViewController.swift */,
+				B8CFABF4268477D7008E2F73 /* firstViewController.swift */,
+				B8CFAC0726847A92008E2F73 /* secondViewController.swift */,
+				B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */,
 				B8CFABF6268477D7008E2F73 /* Main.storyboard */,
 				B8CFABFC268477DA008E2F73 /* Assets.xcassets */,
 				B8CFABFE268477DA008E2F73 /* LaunchScreen.storyboard */,
 				B8CFAC01268477DA008E2F73 /* Info.plist */,
 				B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */,
+				B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */,
+				B8CFAC0D268492E9008E2F73 /* LocationManager.swift */,
+				B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */,
 			);
 			path = RunningProject;
 			sourceTree = "<group>";
@@ -140,9 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8CFABF5268477D7008E2F73 /* ViewController.swift in Sources */,
+				B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */,
+				B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */,
 				B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */,
+				B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */,
+				B8CFAC0E268492E9008E2F73 /* LocationManager.swift in Sources */,
 				B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */,
+				B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */,
+				B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */,
 				B8CFABFB268477D7008E2F73 /* RunningProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
