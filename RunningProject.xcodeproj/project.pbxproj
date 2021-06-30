@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */; };
+		B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */; };
 		B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF0268477D7008E2F73 /* AppDelegate.swift */; };
 		B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */; };
 		B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF4268477D7008E2F73 /* firstViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routesViewController.swift; sourceTree = "<group>"; };
+		B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		B8CFABED268477D7008E2F73 /* RunningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CFABF0268477D7008E2F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				B8CFABF4268477D7008E2F73 /* firstViewController.swift */,
 				B8CFAC0726847A92008E2F73 /* secondViewController.swift */,
 				B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */,
+				B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */,
+				B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */,
 				B8CFABF6268477D7008E2F73 /* Main.storyboard */,
 				B8CFABFC268477DA008E2F73 /* Assets.xcassets */,
 				B8CFABFE268477DA008E2F73 /* LaunchScreen.storyboard */,
@@ -152,9 +158,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */,
 				B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */,
 				B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */,
 				B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */,
+				B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */,
 				B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */,
 				B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */,
 				B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */,

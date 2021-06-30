@@ -26,6 +26,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pct-Vj-vXQ" userLabel="Routes button">
                                 <rect key="frame" x="164.5" y="483" width="85" height="30"/>
                                 <state key="normal" title="Go to routes"/>
+                                <connections>
+                                    <action selector="routesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eKV-bt-a3s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -39,11 +42,102 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="7li-OA-5dz" id="qSS-H3-pGB"/>
+                        <outlet property="routesButton" destination="Pct-Vj-vXQ" id="N6j-mt-3yQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23" y="77"/>
+        </scene>
+        <!--routesViewController-->
+        <scene sceneID="bmz-1g-QeW">
+            <objects>
+                <viewController storyboardIdentifier="routes_vc" id="LI1-Dp-qij" userLabel="routesViewController" customClass="routesViewController" customModule="RunningProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TAk-4q-dxm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available routes for competition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onb-IX-8nQ">
+                                <rect key="frame" x="81" y="49" width="252" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vk1-vE-Frc">
+                                <rect key="frame" x="0.0" y="78" width="414" height="236"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqO-9v-Z1t">
+                                <rect key="frame" x="127" y="430" width="160" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="See stats for route"/>
+                                <connections>
+                                    <action selector="startRouteTapped:" destination="LI1-Dp-qij" eventType="touchUpInside" id="AGY-Kl-olk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fNb-cy-6Wp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zqO-9v-Z1t" firstAttribute="centerY" secondItem="TAk-4q-dxm" secondAttribute="centerY" id="307-Yn-LE9"/>
+                            <constraint firstItem="zqO-9v-Z1t" firstAttribute="centerX" secondItem="TAk-4q-dxm" secondAttribute="centerX" id="7kX-ev-sA8"/>
+                            <constraint firstItem="onb-IX-8nQ" firstAttribute="top" secondItem="fNb-cy-6Wp" secondAttribute="top" constant="5" id="fha-eX-7G9"/>
+                            <constraint firstItem="onb-IX-8nQ" firstAttribute="centerX" secondItem="TAk-4q-dxm" secondAttribute="centerX" id="rc3-JM-Rh5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="picker" destination="vk1-vE-Frc" id="3Ct-Z2-Rpg"/>
+                        <outlet property="startRouteButton" destination="zqO-9v-Z1t" id="bO6-nN-LdL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tDu-9M-vhE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="820.98214285714278"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="Sbi-3s-NvL">
+            <objects>
+                <viewController storyboardIdentifier="leaderboard_vc" id="wwN-nO-Elr" customClass="leaderboardViewController" customModule="RunningProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rz7-31-Ovv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ZO-Eb-lZq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="387"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leader board" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1F-dz-bga">
+                                <rect key="frame" x="148.5" y="436" width="117" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="1. Jonatan Wikström                    57s" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="70q-sY-94s">
+                                <rect key="frame" x="20" y="468" width="374" height="394"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yk0-Wk-GXd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="J1F-dz-bga" firstAttribute="centerX" secondItem="Rz7-31-Ovv" secondAttribute="centerX" id="09d-iF-JcO"/>
+                            <constraint firstItem="J1F-dz-bga" firstAttribute="top" secondItem="7ZO-Eb-lZq" secondAttribute="bottom" constant="5" id="5KT-v8-Xjk"/>
+                            <constraint firstItem="7ZO-Eb-lZq" firstAttribute="trailing" secondItem="yk0-Wk-GXd" secondAttribute="trailing" id="6WN-xI-9xY"/>
+                            <constraint firstItem="J1F-dz-bga" firstAttribute="centerY" secondItem="Rz7-31-Ovv" secondAttribute="centerY" id="Iig-II-Eps"/>
+                            <constraint firstItem="7ZO-Eb-lZq" firstAttribute="top" secondItem="yk0-Wk-GXd" secondAttribute="top" id="YtO-g7-KVp"/>
+                            <constraint firstItem="7ZO-Eb-lZq" firstAttribute="leading" secondItem="yk0-Wk-GXd" secondAttribute="leading" id="g8L-CH-DdO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="7ZO-Eb-lZq" id="0n7-KH-Mjp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0lW-MU-nK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744.92753623188412" y="820.98214285714278"/>
         </scene>
         <!--secondViewController-->
         <scene sceneID="VWJ-s3-okN">
@@ -181,6 +275,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

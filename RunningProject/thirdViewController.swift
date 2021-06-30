@@ -25,7 +25,6 @@ class thirdViewController: UIViewController {
         
     }
     
-    
     func updateRun(){
         
         let distance = Measurement(value: run.distance, unit: UnitLength.meters)
@@ -38,7 +37,6 @@ class thirdViewController: UIViewController {
 
         
     }
-
     
     private func mapRegion() -> MKCoordinateRegion? {
       guard
@@ -81,7 +79,6 @@ class thirdViewController: UIViewController {
         let location = location as! Location
         return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
       }
-    
       return MKPolyline(coordinates: coords, count: coords.count)
     }
 
@@ -105,8 +102,6 @@ class thirdViewController: UIViewController {
        
  
     }
-    
-    
     
   }
 

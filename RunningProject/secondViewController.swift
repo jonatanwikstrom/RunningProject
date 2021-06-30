@@ -46,15 +46,11 @@ class secondViewController: UIViewController {
       manager.stopUpdatingLocation()
     }
 
-
-    
-    
     
     @IBAction func startTapped(_ sender: Any) {
         startButton.isHidden = true
         stopButton.isHidden = false
         startTraining()
-        
         
     }
     
@@ -164,7 +160,6 @@ extension secondViewController: CLLocationManagerDelegate {
             distance = distance + Measurement(value: delta, unit: UnitLength.meters)
             let coordinates = [lastLocation.coordinate, newLocation.coordinate]
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-
           }
           
           locationList.append(newLocation)
