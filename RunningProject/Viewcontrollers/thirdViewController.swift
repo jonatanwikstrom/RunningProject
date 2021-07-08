@@ -14,6 +14,8 @@ class thirdViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var saveButton: UIButton!
+    
     
     var run: Run!
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -22,6 +24,19 @@ class thirdViewController: UIViewController {
         super.viewDidLoad()
         self.mapView.delegate = self
         updateRun()
+        
+    }
+    
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveRun()
+        let vc = storyboard?.instantiateViewController(identifier: "personal_vc") as! personalPageViewController
+        present(vc, animated: true)
+    }
+    
+   
+    func saveRun(){
+        
         
     }
     
@@ -89,18 +104,12 @@ class thirdViewController: UIViewController {
         locations.count > 0,
         let region = mapRegion()
       else {
-          let alert = UIAlertController(title: "Error",
-                                        message: "Sorry, this run has no locations saved",
-                                        preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-          present(alert, animated: true)
           return
       }
         
       mapView.setRegion(region, animated: true)
       mapView.addOverlay(polyLine())
-       
- 
+
     }
     
   }

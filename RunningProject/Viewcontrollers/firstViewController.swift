@@ -14,6 +14,9 @@ class firstViewController: UIViewController {
     
     @IBOutlet weak var routesButton: UIButton!
     
+    @IBOutlet weak var statsButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,14 @@ class firstViewController: UIViewController {
         present(vc2, animated: true)
         
     }
+    
+    
+    @IBAction func statsTapped(_ sender: Any) {
+        let vc3 = storyboard?.instantiateViewController(identifier: "personal_vc") as! personalPageViewController
+        present(vc3, animated: true)
+        
+    }
+    
 
 }
 

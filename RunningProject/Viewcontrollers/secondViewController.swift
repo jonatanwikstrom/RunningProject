@@ -16,14 +16,23 @@ class secondViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var warningLabel: UILabel!
+    
     
     var run: Run!
+    var preLoadRun: PreLoadRun!
     let manager = CLLocationManager()
     var timer:Timer?
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var seconds = 0
     var distance = Measurement(value: 0, unit: UnitLength.meters)
     var locationList: [CLLocation] = []
+    
+    var latitudes = [Double]()
+    var longitudes = [Double]()
+    var importedPolyline = MKPolyline()
+    var challengeBool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +46,8 @@ class secondViewController: UIViewController {
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        mapView.removeOverlays(mapView.overlays)
+        checkForChallenge()
  
     }
     
@@ -68,12 +79,11 @@ class secondViewController: UIViewController {
         distance = Measurement(value: 0, unit: UnitLength.meters)
         locationList.removeAll()
         updateStats()
-        mapView.removeOverlays(mapView.overlays)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.everySec()
         }
         startLocationUpdates()
-        
+
     }
     
     func everySec(){
@@ -127,6 +137,33 @@ class secondViewController: UIViewController {
         mapView.showsUserLocation = true
         
     }
+    
+    func checkForChallenge(){
+        
+        if latitudes.isEmpty{
+            return
+        }else{
+            mapView.addOverlay(importedPolyline)
+            challengeBool = true
+            let startPin = MKPointAnnotation()
+            let finishPin = MKPointAnnotation()
+              startPin.coordinate.latitude = latitudes.first!
+              startPin.coordinate.longitude = longitudes.first!
+              startPin.title = "Starting line"
+              startPin.title = "Finish line"
+              finishPin.coordinate.latitude = latitudes.last!
+              finishPin.coordinate.longitude = longitudes.last!
+
+              mapView.addAnnotation(startPin)
+              mapView.addAnnotation(finishPin)
+        }
+ 
+    }
+    
+    func checkDifference(){
+        //Kom på ett smart sätt att avgöra om användaren är "on track"
+        
+    }
 
 }
 
@@ -146,9 +183,27 @@ extension secondViewController: MKMapViewDelegate {
 extension secondViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         if let currentLocation = locations.first{
             currentLocUpdate(currentLocation)
+        }
+        if challengeBool == true {
+            if (abs(latitudes[0] - manager.location!.coordinate.latitude)) > 0.001 || (abs(longitudes[0] - manager.location!.coordinate.longitude)) > 0.001 {
+                warningLabel.isHidden = false
+                startButton.isEnabled = false
+                startButton.setTitleColor(.gray, for: .normal)
+                
+            }
+            else{
+                warningLabel.isHidden = true
+                startButton.isEnabled = true
+                startButton.setTitleColor(.blue, for: .normal)
+            }
+            
+            if startButton.isSelected{
+                checkDifference()
+            }
+            
         }
         
         for newLocation in locations {
@@ -169,4 +224,5 @@ extension secondViewController: CLLocationManagerDelegate {
     }
     
 }
+
 

@@ -12,37 +12,59 @@ import CoreLocation
 class leaderboardViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-  
+    @IBOutlet weak var routeLabel: UILabel!
+    @IBOutlet weak var acceptButton: UIButton!
+    
+    
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var savedCoords: [CLLocationCoordinate2D] = []
-    var savedRoute: Run!
+    var savedRoute: PreLoadRun!
+    var routeName = ""
     
-    var latitudes = [59.385358, 59.385529, 59.385704, 59.385835, 59.385889, 59.385911, 59.385923, 59.385900, 59.385900, 59.385824, 59.385704, 59.385529, 59.385398, 59.385201, 59.385081, 59.384950, 59.384829, 59.384687, 59.384578, 59.384578, 59.384622]
-    
-    var longitudes = [13.516556, 13.517200, 13.517909, 13.518617, 13.519390, 13.520421, 13.521315, 13.522352, 13.523167, 13.523876, 13.524155, 13.523898, 13.523232, 13.522437, 13.521428, 13.520591, 13.519732, 13.518723, 13.517993, 13.517220, 13.516382]
+    var latitudes = [Double]()
+    var longitudes = [Double]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         uploadRoute()
+        setCorrectRoute()
         loadMap()
     }
     
-    func uploadRoute(){
-        let newRoute = Run(context: CoreDataStack.context)
-        newRoute.distance = 400
-        newRoute.duration = Int16(60)
+    @IBAction func acceptTapped(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "second_vc") as! secondViewController
+        vc.latitudes = latitudes
+        vc.longitudes = longitudes
+        vc.importedPolyline = polyLine()
         
-          let locStat = Location(context: CoreDataStack.context)
+        present(vc, animated: true)
+        
+    }
+    
+    
+    
+    func setCorrectRoute(){
+        self.routeLabel.text = routeName
+ 
+        
+    }
+    
+    
+    func uploadRoute(){
+        let newRoute = PreLoadRun(context: preLoadCoreDataStack.secondContext)
+        newRoute.distance = 400
+        
+          let locStat = PreLoadLocation(context: preLoadCoreDataStack.secondContext)
         
         for x in 0..<latitudes.count {
             locStat.latitude = latitudes[x]
             locStat.longitude = longitudes[x]
-            newRoute.addToLocations(locStat)
+            newRoute.addToPreLoadLocations(locStat)
             
         }
-        CoreDataStack.saveContext()
+        preLoadCoreDataStack.saveContext()
         savedRoute = newRoute
     }
     
@@ -78,7 +100,7 @@ class leaderboardViewController: UIViewController {
     
     private func loadMap() {
       guard
-        let locations = savedRoute.locations,
+        let locations = savedRoute.preLoadLocations,
         locations.count > 0,
         let region = mapRegion()
       else {
@@ -92,6 +114,15 @@ class leaderboardViewController: UIViewController {
         
       mapView.setRegion(region, animated: true)
       mapView.addOverlay(polyLine())
+      let startPin = MKPointAnnotation()
+      let finishPin = MKPointAnnotation()
+        startPin.coordinate.latitude = latitudes.first!
+        startPin.coordinate.longitude = longitudes.first!
+        finishPin.coordinate.latitude = latitudes.last!
+        finishPin.coordinate.longitude = longitudes.last!
+
+        mapView.addAnnotation(startPin)
+        mapView.addAnnotation(finishPin)
        
  
     }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PreLoadLocation" representedClassName="PreLoadLocation" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="preLoadRun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PreLoadRun" inverseName="preLoadLocations" inverseEntity="PreLoadRun"/>
+    </entity>
+    <entity name="PreLoadRun" representedClassName="PreLoadRun" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="preLoadLocations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PreLoadLocation" inverseName="preLoadRun" inverseEntity="PreLoadLocation"/>
+    </entity>
+    <elements>
+        <element name="PreLoadRun" positionX="-45" positionY="0" width="128" height="59"/>
+        <element name="PreLoadLocation" positionX="-18" positionY="36" width="128" height="74"/>
+    </elements>
+</model>

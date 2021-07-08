@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B82D2FA02696D95A000E70B7 /* Run+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F982696D95A000E70B7 /* Run+CoreDataClass.swift */; };
+		B82D2FA12696D95A000E70B7 /* Run+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F992696D95A000E70B7 /* Run+CoreDataProperties.swift */; };
+		B82D2FA62696D95A000E70B7 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F9E2696D95A000E70B7 /* Location+CoreDataClass.swift */; };
+		B82D2FA72696D95A000E70B7 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F9F2696D95A000E70B7 /* Location+CoreDataProperties.swift */; };
+		B82D2FB12696FA0C000E70B7 /* preLoadCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */; };
+		B82D2FB42696FB19000E70B7 /* preLoadRoutes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */; };
+		B82D2FB92696FC08000E70B7 /* PreLoadRun+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB52696FC08000E70B7 /* PreLoadRun+CoreDataClass.swift */; };
+		B82D2FBA2696FC08000E70B7 /* PreLoadRun+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB62696FC08000E70B7 /* PreLoadRun+CoreDataProperties.swift */; };
+		B82D2FBB2696FC08000E70B7 /* PreLoadLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB72696FC08000E70B7 /* PreLoadLocation+CoreDataClass.swift */; };
+		B82D2FBC2696FC08000E70B7 /* PreLoadLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB82696FC08000E70B7 /* PreLoadLocation+CoreDataProperties.swift */; };
+		B8563C0A2694461200FA20B9 /* personalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8563C092694461200FA20B9 /* personalPageViewController.swift */; };
 		B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */; };
 		B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */; };
 		B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFABF0268477D7008E2F73 /* AppDelegate.swift */; };
@@ -23,6 +34,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B82D2F982696D95A000E70B7 /* Run+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B82D2F992696D95A000E70B7 /* Run+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B82D2F9E2696D95A000E70B7 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B82D2F9F2696D95A000E70B7 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preLoadCoreDataStack.swift; sourceTree = "<group>"; };
+		B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = preLoadRoutes.xcdatamodel; sourceTree = "<group>"; };
+		B82D2FB52696FC08000E70B7 /* PreLoadRun+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadRun+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B82D2FB62696FC08000E70B7 /* PreLoadRun+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadRun+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B82D2FB72696FC08000E70B7 /* PreLoadLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B82D2FB82696FC08000E70B7 /* PreLoadLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8563C092694461200FA20B9 /* personalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personalPageViewController.swift; sourceTree = "<group>"; };
 		B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routesViewController.swift; sourceTree = "<group>"; };
 		B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		B8CFABED268477D7008E2F73 /* RunningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +73,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8563C0B26944A4E00FA20B9 /* Viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				B8CFABF4268477D7008E2F73 /* firstViewController.swift */,
+				B8CFAC0726847A92008E2F73 /* secondViewController.swift */,
+				B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */,
+				B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */,
+				B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */,
+				B8563C092694461200FA20B9 /* personalPageViewController.swift */,
+			);
+			path = Viewcontrollers;
+			sourceTree = "<group>";
+		};
+		B8563C1D26946ACD00FA20B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B82D2FB52696FC08000E70B7 /* PreLoadRun+CoreDataClass.swift */,
+				B82D2FB62696FC08000E70B7 /* PreLoadRun+CoreDataProperties.swift */,
+				B82D2FB72696FC08000E70B7 /* PreLoadLocation+CoreDataClass.swift */,
+				B82D2FB82696FC08000E70B7 /* PreLoadLocation+CoreDataProperties.swift */,
+				B82D2F982696D95A000E70B7 /* Run+CoreDataClass.swift */,
+				B82D2F992696D95A000E70B7 /* Run+CoreDataProperties.swift */,
+				B82D2F9E2696D95A000E70B7 /* Location+CoreDataClass.swift */,
+				B82D2F9F2696D95A000E70B7 /* Location+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B8CFABE4268477D7008E2F73 = {
 			isa = PBXGroup;
 			children = (
@@ -70,19 +120,18 @@
 		B8CFABEF268477D7008E2F73 /* RunningProject */ = {
 			isa = PBXGroup;
 			children = (
+				B8563C1D26946ACD00FA20B9 /* Model */,
+				B8563C0B26944A4E00FA20B9 /* Viewcontrollers */,
 				B8CFABF0268477D7008E2F73 /* AppDelegate.swift */,
 				B8CFABF2268477D7008E2F73 /* SceneDelegate.swift */,
-				B8CFABF4268477D7008E2F73 /* firstViewController.swift */,
-				B8CFAC0726847A92008E2F73 /* secondViewController.swift */,
-				B8CFAC0926847ABE008E2F73 /* thirdViewController.swift */,
-				B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */,
-				B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */,
 				B8CFABF6268477D7008E2F73 /* Main.storyboard */,
 				B8CFABFC268477DA008E2F73 /* Assets.xcassets */,
 				B8CFABFE268477DA008E2F73 /* LaunchScreen.storyboard */,
 				B8CFAC01268477DA008E2F73 /* Info.plist */,
 				B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */,
+				B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */,
 				B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */,
+				B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */,
 				B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */,
 			);
 			path = RunningProject;
@@ -159,15 +208,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */,
+				B82D2FB12696FA0C000E70B7 /* preLoadCoreDataStack.swift in Sources */,
 				B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */,
+				B82D2FB92696FC08000E70B7 /* PreLoadRun+CoreDataClass.swift in Sources */,
 				B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */,
 				B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */,
+				B82D2FA62696D95A000E70B7 /* Location+CoreDataClass.swift in Sources */,
 				B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */,
 				B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */,
+				B82D2FBA2696FC08000E70B7 /* PreLoadRun+CoreDataProperties.swift in Sources */,
+				B8563C0A2694461200FA20B9 /* personalPageViewController.swift in Sources */,
+				B82D2FB42696FB19000E70B7 /* preLoadRoutes.xcdatamodeld in Sources */,
+				B82D2FBC2696FC08000E70B7 /* PreLoadLocation+CoreDataProperties.swift in Sources */,
+				B82D2FA72696D95A000E70B7 /* Location+CoreDataProperties.swift in Sources */,
 				B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */,
 				B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */,
 				B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */,
 				B8CFABFB268477D7008E2F73 /* RunningProject.xcdatamodeld in Sources */,
+				B82D2FA02696D95A000E70B7 /* Run+CoreDataClass.swift in Sources */,
+				B82D2FBB2696FC08000E70B7 /* PreLoadLocation+CoreDataClass.swift in Sources */,
+				B82D2FA12696D95A000E70B7 /* Run+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +431,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */,
+			);
+			currentVersion = B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */;
+			path = preLoadRoutes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
