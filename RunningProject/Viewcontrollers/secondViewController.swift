@@ -70,7 +70,8 @@ class secondViewController: UIViewController {
         stopTraining()
         let vc = storyboard?.instantiateViewController(identifier: "third_vc") as! thirdViewController
         vc.run = run
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
+        //present(vc, animated: true)
         
     }
     

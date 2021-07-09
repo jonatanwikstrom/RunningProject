@@ -49,7 +49,8 @@ class routesViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         vc.routeName = valueSelected
         vc.latitudes = latitudes
         vc.longitudes = longitudes
-        present(vc, animated: true)
+        
+        navigationController?.pushViewController(vc, animated: true)
         
         
     }

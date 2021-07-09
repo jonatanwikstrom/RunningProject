@@ -31,7 +31,7 @@ class thirdViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         saveRun()
         let vc = storyboard?.instantiateViewController(identifier: "personal_vc") as! personalPageViewController
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
    
