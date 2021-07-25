@@ -2,7 +2,7 @@
 //  Run+CoreDataProperties.swift
 //  RunningProject
 //
-//  Created by Jonatan Wikström on 2021-07-08.
+//  Created by Jonatan Wikström on 2021-07-25.
 //
 //
 
@@ -19,6 +19,7 @@ extension Run {
     @NSManaged public var distance: Double
     @NSManaged public var duration: Int16
     @NSManaged public var timestamp: Date?
+    @NSManaged public var gubbholmen: Int16
     @NSManaged public var locations: NSOrderedSet?
 
 }

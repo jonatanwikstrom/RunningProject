@@ -39,10 +39,16 @@ class leaderboardViewController: UIViewController {
         vc.longitudes = longitudes
         vc.importedPolyline = polyLine()
         
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
+    
         
     }
     
+    func switchTabItem(tt: Int){
+        
+        tabBarController?.selectedIndex = tt
+        
+    }
     
     
     func setCorrectRoute(){

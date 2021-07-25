@@ -8,15 +8,40 @@
 import Foundation
 
 struct FormatDisplay {
-  static func distance(_ distance: Double) -> String {
-    let distanceMeasurement = Measurement(value: distance, unit: UnitLength.meters)
-    return FormatDisplay.distance(distanceMeasurement)
+  static func dist1(_ distance: Double) -> String {
+    let distanceMeasurement = Measurement(value: distance, unit: UnitLength.kilometers)
+    return FormatDisplay.dist2(distanceMeasurement)
   }
   
-  static func distance(_ distance: Measurement<UnitLength>) -> String {
+    static func dist2(_ distance: Measurement<UnitLength>) -> String {
     let formatter = MeasurementFormatter()
+    formatter.numberFormatter.maximumFractionDigits = 3
+    formatter.numberFormatter.numberStyle = .decimal
+    formatter.unitOptions = .providedUnit
+    formatter.unitStyle = MeasurementFormatter.UnitStyle.long
     return formatter.string(from: distance)
   }
+
+    static func preciseRound(
+        _ value: Double,
+        precision: RoundingPrecision = .ones) -> Double
+    {
+        switch precision {
+        case .ones:
+            return round(value)
+        case .tenths:
+            return round(value * 10) / 10.0
+        case .hundredths:
+            return round(value * 100) / 100.0
+        }
+    }
+    
+    public enum RoundingPrecision {
+        case ones
+        case tenths
+        case hundredths
+    }
+    
   
   static func time(_ seconds: Int) -> String {
     let formatter = DateComponentsFormatter()

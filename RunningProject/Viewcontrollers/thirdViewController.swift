@@ -20,6 +20,7 @@ class thirdViewController: UIViewController {
     var run: Run!
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
@@ -30,8 +31,19 @@ class thirdViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         saveRun()
-        let vc = storyboard?.instantiateViewController(identifier: "personal_vc") as! personalPageViewController
-        navigationController?.pushViewController(vc, animated: true)
+        switchTabItem(tt: 0)
+        loadViewIfNeeded()
+
+        let vc2 = storyboard?.instantiateViewController(identifier: "second_vc") as! secondViewController
+        navigationController?.pushViewController(vc2, animated: false)
+
+        
+    }
+    
+    func switchTabItem(tt: Int){
+        
+        tabBarController?.selectedIndex = tt
+        
     }
     
    
@@ -42,7 +54,7 @@ class thirdViewController: UIViewController {
     
     func updateRun(){
         
-        let distance = Measurement(value: run.distance, unit: UnitLength.meters)
+        let distance = FormatDisplay.dist1(run.distance)
         let seconds = Int(run.duration)
         let formattedTime = FormatDisplay.time(seconds)
         

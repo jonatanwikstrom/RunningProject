@@ -2,7 +2,7 @@
 //  Run+CoreDataClass.swift
 //  RunningProject
 //
-//  Created by Jonatan Wikström on 2021-07-08.
+//  Created by Jonatan Wikström on 2021-07-25.
 //
 //
 

@@ -25,8 +25,9 @@ class secondViewController: UIViewController {
     var timer:Timer?
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var seconds = 0
-    var distance = Measurement(value: 0, unit: UnitLength.meters)
+    var distance = Measurement(value: 0, unit: UnitLength.kilometers)
     var locationList: [CLLocation] = []
+    var competitionList: [CLLocation] = []
     
     var latitudes = [Double]()
     var longitudes = [Double]()
@@ -48,6 +49,7 @@ class secondViewController: UIViewController {
         manager.startUpdatingLocation()
         mapView.removeOverlays(mapView.overlays)
         checkForChallenge()
+        updateDesign()
  
     }
     
@@ -59,8 +61,15 @@ class secondViewController: UIViewController {
 
     
     @IBAction func startTapped(_ sender: Any) {
+        if challengeBool == false{
         startButton.isHidden = true
         stopButton.isHidden = false
+        }
+        else {
+            startButton.isHidden = true
+            stopButton.isHidden = true
+            
+        }
         startTraining()
         
     }
@@ -71,13 +80,23 @@ class secondViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(identifier: "third_vc") as! thirdViewController
         vc.run = run
         navigationController?.pushViewController(vc, animated: true)
-        //present(vc, animated: true)
+        navigationController?.isNavigationBarHidden = true
+        resetRunPage()
+        
+        
+        
+    }
+    
+    func updateDesign(){
+        
+        startButton.setUpLayer(sampleButton: startButton)
+        stopButton.setUpLayer(sampleButton: stopButton)
         
     }
     
     func startTraining(){
         seconds = 0
-        distance = Measurement(value: 0, unit: UnitLength.meters)
+        distance = Measurement(value: 0, unit: UnitLength.kilometers) / 1000
         locationList.removeAll()
         updateStats()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -93,17 +112,28 @@ class secondViewController: UIViewController {
     }
     
     private func updateStats() {
-        let currentDistance = distance
+        //let currentDistance = FormatDisplay.dist2(distance)
+        let currentDistance = FormatDisplay.preciseRound(distance.value, precision: .hundredths)
         let currentTime = FormatDisplay.time(seconds)
         
-        distanceLabel.text = "Distance:  \(currentDistance)"
-        timeLabel.text = "Time:  \(currentTime)"
+        distanceLabel.text = "\(currentDistance)"
+        timeLabel.text = "\(currentTime)"
     }
     
     func startLocationUpdates() {
       manager.activityType = .fitness
       manager.distanceFilter = 10
       manager.startUpdatingLocation()
+    }
+    
+    func resetRunPage(){
+        timer?.invalidate()
+        stopButton.isHidden = true
+        startButton.isHidden = false
+     
+        seconds = 0
+        distance = Measurement(value: 0, unit: UnitLength.kilometers) / 1000
+        updateStats()
     }
     
     
@@ -114,7 +144,8 @@ class secondViewController: UIViewController {
     
     func saveProgress(){
         let newStat = Run(context: CoreDataStack.context)
-        newStat.distance = distance.value
+        if challengeBool == false{
+        newStat.distance = FormatDisplay.preciseRound(distance.value, precision: .hundredths)
         newStat.duration = Int16(seconds)
         
         for location in locationList {
@@ -123,10 +154,15 @@ class secondViewController: UIViewController {
           locStat.longitude = location.coordinate.longitude
           newStat.addToLocations(locStat)
         }
-        
+        }
+        else if challengeBool == true{
+            newStat.gubbholmen = Int16(seconds)
+        }
         CoreDataStack.saveContext()
         
         run = newStat
+        
+
     }
     
     func currentLocUpdate(_ location: CLLocation){
@@ -162,7 +198,7 @@ class secondViewController: UIViewController {
     }
     
     func checkDifference(){
-        //Kom på ett smart sätt att avgöra om användaren är "on track"
+            
         
     }
 
@@ -205,25 +241,53 @@ extension secondViewController: CLLocationManagerDelegate {
                 checkDifference()
             }
             
+            if (abs(latitudes.last! - manager.location!.coordinate.latitude)) < 0.01 && (abs(longitudes.last! - manager.location!.coordinate.longitude)) < 0.01 {
+                
+                stopButton.isHidden = true
+                startButton.isHidden = false
+                stopTraining()
+                challengeBool = false
+                let vc = storyboard?.instantiateViewController(identifier: "third_vc") as! thirdViewController
+                vc.run = run
+                navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            
         }
         
         for newLocation in locations {
           let howRecent = newLocation.timestamp.timeIntervalSinceNow
           guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
 
+
           if let lastLocation = locationList.last {
             let delta = newLocation.distance(from: lastLocation)
-            distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+            distance = distance + Measurement(value: delta, unit: UnitLength.kilometers) / 1000
             let coordinates = [lastLocation.coordinate, newLocation.coordinate]
+            if startButton.isHidden == true{
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+            }
           }
           
           locationList.append(newLocation)
         }
-      
+        
         
     }
     
+}
+
+
+extension UIButton
+{
+ func setUpLayer(sampleButton: UIButton?) {
+    
+    sampleButton!.layer.cornerRadius = 15
+    sampleButton!.layer.masksToBounds = true
+    
+  sampleButton!.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+ }
+
 }
 
 

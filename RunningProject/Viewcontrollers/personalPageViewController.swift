@@ -17,6 +17,9 @@ class personalPageViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -29,9 +32,14 @@ class personalPageViewController: UIViewController{
         var distance:Double
 
     }
+    struct competingStats {
+
+        var gubbholmen:Int16
+
+    }
     
     var data:[RunningStats]=[RunningStats]()
-
+    var compData:[competingStats]=[competingStats]()
     
     
     override func viewDidLoad() {
@@ -56,8 +64,10 @@ class personalPageViewController: UIViewController{
         for item in items {
             
             data.append(RunningStats(duration: item.duration, distance: item.distance))
-            
+            compData.append(competingStats(gubbholmen: item.gubbholmen))
         }
+       
+        
         }
     
     public func clearAllCoreData() {
@@ -105,6 +115,8 @@ class personalPageViewController: UIViewController{
         }
     }
     
+    
+    
 
 
 }
@@ -126,7 +138,6 @@ extension personalPageViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(items.count)
         return items.count
     }
     
@@ -135,9 +146,8 @@ extension personalPageViewController: UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath)
         
         let RunningStats = data[indexPath.row]
-        //let task = fetchTaskAtIndexPath(indexPath)
             
-       cell.textLabel!.text = "\(RunningStats.distance) meters       \(RunningStats.duration) seconds"
+       cell.textLabel!.text = "\(RunningStats.distance) km       \(RunningStats.duration) seconds"
 
 
         return cell
