@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Location" representedClassName="Location" syncable="YES">
+    <entity name="Gubbholmen" representedClassName="Gubbholmen" syncable="YES" codeGenerationType="class">
+        <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="KarlstadStadslopp" representedClassName="KarlstadStadslopp" syncable="YES" codeGenerationType="class">
+        <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Run" inverseName="locations" inverseEntity="Run"/>
     </entity>
-    <entity name="Run" representedClassName="Run" syncable="YES">
+    <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="gubbholmen" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Location" inverseName="run" inverseEntity="Location"/>
     </entity>
     <elements>
+        <element name="Gubbholmen" positionX="-63" positionY="36" width="128" height="59"/>
         <element name="Location" positionX="-54" positionY="18" width="128" height="89"/>
-        <element name="Run" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Run" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="KarlstadStadslopp" positionX="-63" positionY="36" width="128" height="59"/>
     </elements>
 </model>

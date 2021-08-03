@@ -21,6 +21,7 @@ class secondViewController: UIViewController {
     
     var run: Run!
     var preLoadRun: PreLoadRun!
+    var gubbholmen: Gubbholmen!
     let manager = CLLocationManager()
     var timer:Timer?
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -29,9 +30,11 @@ class secondViewController: UIViewController {
     var locationList: [CLLocation] = []
     var competitionList: [CLLocation] = []
     
+    var savedCoords: [CLLocationCoordinate2D] = []
+    
     var latitudes = [Double]()
     var longitudes = [Double]()
-    var importedPolyline = MKPolyline()
+    //var importedPolyline = MKPolyline()
     var challengeBool = false
     
     
@@ -154,13 +157,16 @@ class secondViewController: UIViewController {
           locStat.longitude = location.coordinate.longitude
           newStat.addToLocations(locStat)
         }
+            CoreDataStack.saveContext()
+            run = newStat
         }
         else if challengeBool == true{
-            newStat.gubbholmen = Int16(seconds)
+            let compStat = Gubbholmen(context: CoreDataStack.context)
+            compStat.time = Int16(seconds)
+            
+            CoreDataStack.saveContext()
+            gubbholmen = compStat
         }
-        CoreDataStack.saveContext()
-        
-        run = newStat
         
 
     }
@@ -180,22 +186,53 @@ class secondViewController: UIViewController {
         if latitudes.isEmpty{
             return
         }else{
-            mapView.addOverlay(importedPolyline)
+            loadRoute()
+            //mapView.addOverlay(importedPolyline)
             challengeBool = true
             let startPin = MKPointAnnotation()
             let finishPin = MKPointAnnotation()
               startPin.coordinate.latitude = latitudes.first!
               startPin.coordinate.longitude = longitudes.first!
               startPin.title = "Starting line"
-              startPin.title = "Finish line"
+            
               finishPin.coordinate.latitude = latitudes.last!
               finishPin.coordinate.longitude = longitudes.last!
-
+              finishPin.title = "Finish line"
+            
               mapView.addAnnotation(startPin)
               mapView.addAnnotation(finishPin)
         }
  
     }
+    
+    private func polyLine() -> MKPolyline {
+        
+        for x in 0..<latitudes.count {
+            let lat = Double(latitudes[x])
+            let lon = Double(longitudes[x])
+            let destination = CLLocationCoordinate2DMake(lat, lon)
+
+                savedCoords.append(destination)
+        }
+    
+      return MKPolyline(coordinates: savedCoords, count: savedCoords.count)
+    }
+    
+    private func loadRoute(){
+        
+    mapView.addOverlay(polyLine())
+    let startPin = MKPointAnnotation()
+    let finishPin = MKPointAnnotation()
+      startPin.coordinate.latitude = latitudes.first!
+      startPin.coordinate.longitude = longitudes.first!
+      finishPin.coordinate.latitude = latitudes.last!
+      finishPin.coordinate.longitude = longitudes.last!
+
+      mapView.addAnnotation(startPin)
+      mapView.addAnnotation(finishPin)
+    
+
+  }
     
     func checkDifference(){
             
@@ -241,7 +278,7 @@ extension secondViewController: CLLocationManagerDelegate {
                 checkDifference()
             }
             
-            if (abs(latitudes.last! - manager.location!.coordinate.latitude)) < 0.01 && (abs(longitudes.last! - manager.location!.coordinate.longitude)) < 0.01 {
+            if (abs(latitudes.last! - manager.location!.coordinate.latitude)) < 0.001 && (abs(longitudes.last! - manager.location!.coordinate.longitude)) < 0.001 {
                 
                 stopButton.isHidden = true
                 startButton.isHidden = false

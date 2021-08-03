@@ -25,6 +25,7 @@ class personalPageViewController: UIViewController{
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items = [Run]()
+    var compTimes = [Gubbholmen]()
     
     struct RunningStats {
 
@@ -32,10 +33,13 @@ class personalPageViewController: UIViewController{
         var distance:Double
 
     }
-    struct competingStats {
-
-        var gubbholmen:Int16
-
+    struct competingStats: Comparable {
+        var time:Int16
+        
+        static func < (lhs: personalPageViewController.competingStats, rhs: personalPageViewController.competingStats) -> Bool {
+            return lhs.time < rhs.time
+        }
+    
     }
     
     var data:[RunningStats]=[RunningStats]()
@@ -50,6 +54,7 @@ class personalPageViewController: UIViewController{
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "statCell")
         checkForStats()
         tableView.reloadData()
+        getBestTime()
 
     }
     
@@ -64,11 +69,23 @@ class personalPageViewController: UIViewController{
         for item in items {
             
             data.append(RunningStats(duration: item.duration, distance: item.distance))
-            compData.append(competingStats(gubbholmen: item.gubbholmen))
         }
        
-        
         }
+    
+    func checkForCompStats(){
+        
+        do{
+            self.compTimes = try context.fetch(Gubbholmen.fetchRequest())
+        }
+        
+        catch{
+            
+        }
+        for item in compTimes{
+            compData.append(competingStats(time: item.time))
+        }
+    }
     
     public func clearAllCoreData() {
         let entities = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.managedObjectModel.entities
@@ -115,10 +132,19 @@ class personalPageViewController: UIViewController{
         }
     }
     
+    func getBestTime() {
+        if compData.isEmpty == false{
+        compData = compData.sorted()
+            GHTimeLabel.text = "\(compData[1])"
+        }
+        else{
+            KSTimeLabel.text = "no time available"
+            GHTimeLabel.text = "no time available"
+            KRTimeLabel.text = "no time available"
+        }
+        
     
-    
-
-
+    }
 }
 
 class myCustomCell: UITableViewCell {

@@ -58,7 +58,10 @@ class routesViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func setLatLong(){
         
         if valueSelected == "Karlstad stadslopp"{
+            latitudes = [59.379513, 59.380130, 59.380841, 59.381403, 59.381300]
             
+            
+            longitudes = [13.514694, 13.515718, 13.516799, 13.517722, 13.518464]
             
         }
         
