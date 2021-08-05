@@ -48,6 +48,18 @@ class personalPageViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewLoadSetup()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+       viewLoadSetup()
+
+    }
+
+
+     func viewLoadSetup(){
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -55,8 +67,7 @@ class personalPageViewController: UIViewController{
         checkForStats()
         tableView.reloadData()
         getBestTime()
-
-    }
+     }
     
     func checkForStats(){
         
