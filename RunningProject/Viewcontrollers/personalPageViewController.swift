@@ -13,7 +13,6 @@ class personalPageViewController: UIViewController{
     
     @IBOutlet weak var KSTimeLabel: UILabel!
     @IBOutlet weak var GHTimeLabel: UILabel!
-    @IBOutlet weak var KRTimeLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,7 +24,9 @@ class personalPageViewController: UIViewController{
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items = [Run]()
-    var compTimes = [Gubbholmen]()
+    var compTimesGubbholmen = [Gubbholmen]()
+    var compTimesKS = [KarlstadStadslopp]()
+    
     
     struct RunningStats {
 
@@ -43,7 +44,8 @@ class personalPageViewController: UIViewController{
     }
     
     var data:[RunningStats]=[RunningStats]()
-    var compData:[competingStats]=[competingStats]()
+    var compDataGH:[competingStats]=[competingStats]()
+    var compDataKS:[competingStats]=[competingStats]()
     
     
     override func viewDidLoad() {
@@ -84,17 +86,31 @@ class personalPageViewController: UIViewController{
        
         }
     
-    func checkForCompStats(){
+    func checkForCompStatsGH(){
         
         do{
-            self.compTimes = try context.fetch(Gubbholmen.fetchRequest())
+            self.compTimesGubbholmen = try context.fetch(Gubbholmen.fetchRequest())
         }
         
         catch{
             
         }
-        for item in compTimes{
-            compData.append(competingStats(time: item.time))
+        for item in compTimesGubbholmen{
+            compDataGH.append(competingStats(time: item.time))
+        }
+    }
+    
+    func checkForCompStatsKS(){
+        
+        do{
+            self.compTimesKS = try context.fetch(KarlstadStadslopp.fetchRequest())
+        }
+        
+        catch{
+            
+        }
+        for item in compTimesKS{
+            compDataKS.append(competingStats(time: item.time))
         }
     }
     
@@ -144,14 +160,20 @@ class personalPageViewController: UIViewController{
     }
     
     func getBestTime() {
-        if compData.isEmpty == false{
-        compData = compData.sorted()
-            GHTimeLabel.text = "\(compData[1])"
+        if compDataGH.isEmpty == false{
+        compDataGH = compDataGH.sorted()
+            GHTimeLabel.text = "\(compDataGH[1])"
+        }
+        else{
+            GHTimeLabel.text = "no time available"
+        }
+        
+        if compDataKS.isEmpty == false{
+            compDataKS = compDataKS.sorted()
+                KSTimeLabel.text = "\(compDataKS[1])"
         }
         else{
             KSTimeLabel.text = "no time available"
-            GHTimeLabel.text = "no time available"
-            KRTimeLabel.text = "no time available"
         }
         
     

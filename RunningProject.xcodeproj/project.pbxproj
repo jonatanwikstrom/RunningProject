@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B82D2FB12696FA0C000E70B7 /* preLoadCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */; };
-		B82D2FB42696FB19000E70B7 /* preLoadRoutes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */; };
-		B82DA2EC26BC5AA1003B1197 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82DA2EB26BC5AA1003B1197 /* Info.plist */; };
+		B8369FE426C1A9E000C6A070 /* PreLoadLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FD826C1A9DF00C6A070 /* PreLoadLocation+CoreDataClass.swift */; };
+		B8369FE526C1A9E000C6A070 /* PreLoadLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FD926C1A9DF00C6A070 /* PreLoadLocation+CoreDataProperties.swift */; };
+		B8369FE626C1A9E000C6A070 /* PreLoadRun+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDA26C1A9DF00C6A070 /* PreLoadRun+CoreDataClass.swift */; };
+		B8369FE726C1A9E000C6A070 /* PreLoadRun+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDB26C1A9E000C6A070 /* PreLoadRun+CoreDataProperties.swift */; };
+		B8369FE826C1A9E000C6A070 /* KarlstadStadslopp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDC26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataClass.swift */; };
+		B8369FE926C1A9E000C6A070 /* KarlstadStadslopp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDD26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataProperties.swift */; };
+		B8369FEA26C1A9E000C6A070 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDE26C1A9E000C6A070 /* Location+CoreDataClass.swift */; };
+		B8369FEB26C1A9E000C6A070 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FDF26C1A9E000C6A070 /* Location+CoreDataProperties.swift */; };
+		B8369FEC26C1A9E000C6A070 /* Gubbholmen+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FE026C1A9E000C6A070 /* Gubbholmen+CoreDataClass.swift */; };
+		B8369FED26C1A9E000C6A070 /* Gubbholmen+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FE126C1A9E000C6A070 /* Gubbholmen+CoreDataProperties.swift */; };
+		B8369FEE26C1A9E000C6A070 /* Run+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FE226C1A9E000C6A070 /* Run+CoreDataClass.swift */; };
+		B8369FEF26C1A9E000C6A070 /* Run+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8369FE326C1A9E000C6A070 /* Run+CoreDataProperties.swift */; };
 		B8563C0A2694461200FA20B9 /* personalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8563C092694461200FA20B9 /* personalPageViewController.swift */; };
 		B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */; };
 		B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */; };
@@ -27,9 +36,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preLoadCoreDataStack.swift; sourceTree = "<group>"; };
-		B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = preLoadRoutes.xcdatamodel; sourceTree = "<group>"; };
-		B82DA2EB26BC5AA1003B1197 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8369FD826C1A9DF00C6A070 /* PreLoadLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FD926C1A9DF00C6A070 /* PreLoadLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8369FDA26C1A9DF00C6A070 /* PreLoadRun+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadRun+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FDB26C1A9E000C6A070 /* PreLoadRun+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreLoadRun+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8369FDC26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarlstadStadslopp+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FDD26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarlstadStadslopp+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8369FDE26C1A9E000C6A070 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FDF26C1A9E000C6A070 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8369FE026C1A9E000C6A070 /* Gubbholmen+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gubbholmen+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FE126C1A9E000C6A070 /* Gubbholmen+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gubbholmen+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8369FE226C1A9E000C6A070 /* Run+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8369FE326C1A9E000C6A070 /* Run+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8563C092694461200FA20B9 /* personalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personalPageViewController.swift; sourceTree = "<group>"; };
 		B8BBF9E5268B49E100CEBE4B /* routesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routesViewController.swift; sourceTree = "<group>"; };
 		B8BBF9E7268B501900CEBE4B /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +92,18 @@
 		B8563C1D26946ACD00FA20B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8369FD826C1A9DF00C6A070 /* PreLoadLocation+CoreDataClass.swift */,
+				B8369FD926C1A9DF00C6A070 /* PreLoadLocation+CoreDataProperties.swift */,
+				B8369FDA26C1A9DF00C6A070 /* PreLoadRun+CoreDataClass.swift */,
+				B8369FDB26C1A9E000C6A070 /* PreLoadRun+CoreDataProperties.swift */,
+				B8369FDC26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataClass.swift */,
+				B8369FDD26C1A9E000C6A070 /* KarlstadStadslopp+CoreDataProperties.swift */,
+				B8369FDE26C1A9E000C6A070 /* Location+CoreDataClass.swift */,
+				B8369FDF26C1A9E000C6A070 /* Location+CoreDataProperties.swift */,
+				B8369FE026C1A9E000C6A070 /* Gubbholmen+CoreDataClass.swift */,
+				B8369FE126C1A9E000C6A070 /* Gubbholmen+CoreDataProperties.swift */,
+				B8369FE226C1A9E000C6A070 /* Run+CoreDataClass.swift */,
+				B8369FE326C1A9E000C6A070 /* Run+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,10 +135,7 @@
 				B8CFABFC268477DA008E2F73 /* Assets.xcassets */,
 				B8CFABFE268477DA008E2F73 /* LaunchScreen.storyboard */,
 				B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */,
-				B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */,
 				B8CFAC0B2684854C008E2F73 /* CoreDataStack.swift */,
-				B82DA2EB26BC5AA1003B1197 /* Info.plist */,
-				B82D2FB02696FA0C000E70B7 /* preLoadCoreDataStack.swift */,
 				B8CFAC0F268498F6008E2F73 /* FormatDisplay.swift */,
 			);
 			path = RunningProject;
@@ -171,7 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B82DA2EC26BC5AA1003B1197 /* Info.plist in Resources */,
 				B8CFAC00268477DA008E2F73 /* LaunchScreen.storyboard in Resources */,
 				B8CFABFD268477DA008E2F73 /* Assets.xcassets in Resources */,
 				B8CFABF8268477D7008E2F73 /* Main.storyboard in Resources */,
@@ -185,19 +211,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8369FEC26C1A9E000C6A070 /* Gubbholmen+CoreDataClass.swift in Sources */,
 				B8BBF9E8268B501900CEBE4B /* leaderboardViewController.swift in Sources */,
-				B82D2FB12696FA0C000E70B7 /* preLoadCoreDataStack.swift in Sources */,
+				B8369FEF26C1A9E000C6A070 /* Run+CoreDataProperties.swift in Sources */,
+				B8369FED26C1A9E000C6A070 /* Gubbholmen+CoreDataProperties.swift in Sources */,
 				B8CFAC0C2684854D008E2F73 /* CoreDataStack.swift in Sources */,
 				B8CFABF5268477D7008E2F73 /* firstViewController.swift in Sources */,
+				B8369FE726C1A9E000C6A070 /* PreLoadRun+CoreDataProperties.swift in Sources */,
+				B8369FE826C1A9E000C6A070 /* KarlstadStadslopp+CoreDataClass.swift in Sources */,
 				B8CFABF1268477D7008E2F73 /* AppDelegate.swift in Sources */,
+				B8369FEA26C1A9E000C6A070 /* Location+CoreDataClass.swift in Sources */,
 				B8BBF9E6268B49E100CEBE4B /* routesViewController.swift in Sources */,
 				B8CFAC0A26847ABE008E2F73 /* thirdViewController.swift in Sources */,
+				B8369FE426C1A9E000C6A070 /* PreLoadLocation+CoreDataClass.swift in Sources */,
+				B8369FE626C1A9E000C6A070 /* PreLoadRun+CoreDataClass.swift in Sources */,
+				B8369FEB26C1A9E000C6A070 /* Location+CoreDataProperties.swift in Sources */,
 				B8563C0A2694461200FA20B9 /* personalPageViewController.swift in Sources */,
-				B82D2FB42696FB19000E70B7 /* preLoadRoutes.xcdatamodeld in Sources */,
+				B8369FE526C1A9E000C6A070 /* PreLoadLocation+CoreDataProperties.swift in Sources */,
+				B8369FE926C1A9E000C6A070 /* KarlstadStadslopp+CoreDataProperties.swift in Sources */,
 				B8CFABF3268477D7008E2F73 /* SceneDelegate.swift in Sources */,
 				B8CFAC10268498F6008E2F73 /* FormatDisplay.swift in Sources */,
 				B8CFAC0826847A92008E2F73 /* secondViewController.swift in Sources */,
 				B8CFABFB268477D7008E2F73 /* RunningProject.xcdatamodeld in Sources */,
+				B8369FEE26C1A9E000C6A070 /* Run+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,16 +437,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B82D2FB22696FB19000E70B7 /* preLoadRoutes.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */,
-			);
-			currentVersion = B82D2FB32696FB19000E70B7 /* preLoadRoutes.xcdatamodel */;
-			path = preLoadRoutes.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		B8CFABF9268477D7008E2F73 /* RunningProject.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

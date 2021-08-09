@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Gubbholmen" representedClassName="Gubbholmen" syncable="YES" codeGenerationType="class">
+    <entity name="Gubbholmen" representedClassName="Gubbholmen" syncable="YES">
         <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="KarlstadStadslopp" representedClassName="KarlstadStadslopp" syncable="YES" codeGenerationType="class">
+    <entity name="KarlstadStadslopp" representedClassName="KarlstadStadslopp" syncable="YES">
         <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+    <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Run" inverseName="locations" inverseEntity="Run"/>
     </entity>
-    <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
+    <entity name="PreLoadLocation" representedClassName="PreLoadLocation" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="preLoadRun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PreLoadRun" inverseName="preLoadLocations" inverseEntity="PreLoadRun"/>
+    </entity>
+    <entity name="PreLoadRun" representedClassName="PreLoadRun" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="preLoadLocations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PreLoadLocation" inverseName="preLoadRun" inverseEntity="PreLoadLocation"/>
+    </entity>
+    <entity name="Run" representedClassName="Run" syncable="YES">
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -22,8 +31,10 @@
     </entity>
     <elements>
         <element name="Gubbholmen" positionX="-63" positionY="36" width="128" height="59"/>
+        <element name="KarlstadStadslopp" positionX="-63" positionY="36" width="128" height="59"/>
         <element name="Location" positionX="-54" positionY="18" width="128" height="89"/>
         <element name="Run" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="KarlstadStadslopp" positionX="-63" positionY="36" width="128" height="59"/>
+        <element name="PreLoadRun" positionX="-63" positionY="36" width="128" height="59"/>
+        <element name="PreLoadLocation" positionX="-54" positionY="45" width="128" height="74"/>
     </elements>
 </model>

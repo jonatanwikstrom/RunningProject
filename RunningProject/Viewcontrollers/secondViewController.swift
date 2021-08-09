@@ -34,7 +34,7 @@ class secondViewController: UIViewController {
     
     var latitudes = [Double]()
     var longitudes = [Double]()
-    //var importedPolyline = MKPolyline()
+
     var challengeBool = false
     
     
@@ -115,7 +115,6 @@ class secondViewController: UIViewController {
     }
     
     private func updateStats() {
-        //let currentDistance = FormatDisplay.dist2(distance)
         let currentDistance = FormatDisplay.preciseRound(distance.value, precision: .hundredths)
         let currentTime = FormatDisplay.time(seconds)
         
@@ -187,20 +186,8 @@ class secondViewController: UIViewController {
             return
         }else{
             loadRoute()
-            //mapView.addOverlay(importedPolyline)
             challengeBool = true
-            let startPin = MKPointAnnotation()
-            let finishPin = MKPointAnnotation()
-              startPin.coordinate.latitude = latitudes.first!
-              startPin.coordinate.longitude = longitudes.first!
-              startPin.title = "Starting line"
-            
-              finishPin.coordinate.latitude = latitudes.last!
-              finishPin.coordinate.longitude = longitudes.last!
-              finishPin.title = "Finish line"
-            
-              mapView.addAnnotation(startPin)
-              mapView.addAnnotation(finishPin)
+
         }
  
     }
@@ -221,22 +208,61 @@ class secondViewController: UIViewController {
     private func loadRoute(){
         
     mapView.addOverlay(polyLine())
-    let startPin = MKPointAnnotation()
-    let finishPin = MKPointAnnotation()
-      startPin.coordinate.latitude = latitudes.first!
-      startPin.coordinate.longitude = longitudes.first!
-      finishPin.coordinate.latitude = latitudes.last!
-      finishPin.coordinate.longitude = longitudes.last!
-
-      mapView.addAnnotation(startPin)
-      mapView.addAnnotation(finishPin)
+        let startPin = MKPointAnnotation()
+        let finishPin = MKPointAnnotation()
+          startPin.coordinate.latitude = latitudes.first!
+          startPin.coordinate.longitude = longitudes.first!
+          startPin.title = "Starting line"
+        
+          finishPin.coordinate.latitude = latitudes.last!
+          finishPin.coordinate.longitude = longitudes.last!
+          finishPin.title = "Finish line"
+        
+          mapView.addAnnotation(startPin)
+          mapView.addAnnotation(finishPin)
     
 
   }
     
-    func checkDifference(){
+    func checkDifference(_ locations: [CLLocation]){
             
         
+        
+        
+        
+    }
+    
+    func competitionFunction(_ locations: [CLLocation]){
+        
+        if challengeBool == true && startButton.isHidden == false{
+            if (abs(latitudes[0] - manager.location!.coordinate.latitude)) > 0.001 || (abs(longitudes[0] - manager.location!.coordinate.longitude)) > 0.001 {
+                warningLabel.isHidden = false
+                startButton.isEnabled = false
+                startButton.setTitleColor(.gray, for: .normal)
+                
+            }
+            else{
+                warningLabel.isHidden = true
+                startButton.isEnabled = true
+                startButton.setTitleColor(.blue, for: .normal)
+            }
+            
+            if startButton.isSelected{
+                checkDifference(locations)
+            }
+            
+            if (abs(latitudes.last! - manager.location!.coordinate.latitude)) < 0.001 && (abs(longitudes.last! - manager.location!.coordinate.longitude)) < 0.001 {
+                
+                stopButton.isHidden = true
+                startButton.isHidden = false
+                stopTraining()
+                challengeBool = false
+                let vc = storyboard?.instantiateViewController(identifier: "third_vc") as! thirdViewController
+                vc.run = run
+                navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        }
     }
 
 }
@@ -261,36 +287,8 @@ extension secondViewController: CLLocationManagerDelegate {
         if let currentLocation = locations.first{
             currentLocUpdate(currentLocation)
         }
-        if challengeBool == true {
-            if (abs(latitudes[0] - manager.location!.coordinate.latitude)) > 0.001 || (abs(longitudes[0] - manager.location!.coordinate.longitude)) > 0.001 {
-                warningLabel.isHidden = false
-                startButton.isEnabled = false
-                startButton.setTitleColor(.gray, for: .normal)
-                
-            }
-            else{
-                warningLabel.isHidden = true
-                startButton.isEnabled = true
-                startButton.setTitleColor(.blue, for: .normal)
-            }
-            
-            if startButton.isSelected{
-                checkDifference()
-            }
-            
-            if (abs(latitudes.last! - manager.location!.coordinate.latitude)) < 0.001 && (abs(longitudes.last! - manager.location!.coordinate.longitude)) < 0.001 {
-                
-                stopButton.isHidden = true
-                startButton.isHidden = false
-                stopTraining()
-                challengeBool = false
-                let vc = storyboard?.instantiateViewController(identifier: "third_vc") as! thirdViewController
-                vc.run = run
-                navigationController?.pushViewController(vc, animated: true)
-                
-            }
-            
-        }
+
+        competitionFunction(locations)
         
         for newLocation in locations {
           let howRecent = newLocation.timestamp.timeIntervalSinceNow
@@ -308,6 +306,7 @@ extension secondViewController: CLLocationManagerDelegate {
           
           locationList.append(newLocation)
         }
+        
         
         
     }

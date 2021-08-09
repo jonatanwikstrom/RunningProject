@@ -18,10 +18,9 @@ class leaderboardViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var items = [Gubbholmen]()
-    //var item2 = [KarlstadStadslopp]()
-    //var KSitems = [Gubbholmen]()
-    
+    var GHitems = [Gubbholmen]()
+    var KSitems = [KarlstadStadslopp]()
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -46,34 +45,25 @@ class leaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         uploadRoute()
         setCorrectRoute()
         loadMap()
 
-        //checkComp()
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "statCell")
-        checkForStats()
-        tableView.reloadData()
-    }
-    
-    /*func checkComp() {
-        
-        if routeName == "Gubbholmen"{
-            items = [Gubbholmen]()
-        }
-        else if routeName == "Karlstad stadslopp"{
-       
-        }
-        
-    }*/
+        displayCorrectRoute()
+        tableView.reloadData()    }
+
     
     @IBAction func acceptTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "second_vc") as! secondViewController
         vc.latitudes = latitudes
         vc.longitudes = longitudes
-        //vc.importedPolyline = polyLine()
         
         navigationController?.pushViewController(vc, animated: true)
     
@@ -86,6 +76,15 @@ class leaderboardViewController: UIViewController {
         
     }
     
+    func displayCorrectRoute(){
+        if routeName == "Gubbholmen"{
+            checkForGHStats()
+        }
+        else if routeName == "Karlstad stadslopp"{
+            checkForKSStats()
+        }
+    }
+    
     
     func setCorrectRoute(){
         self.routeLabel.text = routeName
@@ -95,10 +94,10 @@ class leaderboardViewController: UIViewController {
     
     
     func uploadRoute(){
-        let newRoute = PreLoadRun(context: preLoadCoreDataStack.secondContext)
+        let newRoute = PreLoadRun(context: CoreDataStack.context)
         newRoute.distance = 400
         
-        let locStat = PreLoadLocation(context: preLoadCoreDataStack.secondContext)
+        let locStat = PreLoadLocation(context: CoreDataStack.context)
         
         for x in 0..<latitudes.count {
             locStat.latitude = latitudes[x]
@@ -106,7 +105,7 @@ class leaderboardViewController: UIViewController {
             newRoute.addToPreLoadLocations(locStat)
             
         }
-        preLoadCoreDataStack.saveContext()
+        CoreDataStack.saveContext()
         savedRoute = newRoute
     }
     
@@ -169,16 +168,32 @@ class leaderboardViewController: UIViewController {
  
     }
     
-    func checkForStats(){
+    func checkForGHStats(){
         
         
         do{
-            self.items = try context.fetch(Gubbholmen.fetchRequest())
+            self.GHitems = try context.fetch(Gubbholmen.fetchRequest())
         }
         catch{
             
         }
-        for item in items {
+        for item in GHitems {
+            
+            data.append(compStats(date: item.timestamp!, duration: item.time))
+        }
+        
+    }
+    
+    func checkForKSStats(){
+        
+        
+        do{
+            self.KSitems = try context.fetch(KarlstadStadslopp.fetchRequest())
+        }
+        catch{
+            
+        }
+        for item in KSitems {
             
             data.append(compStats(date: item.timestamp!, duration: item.time))
         }
@@ -193,7 +208,12 @@ class leaderboardViewController: UIViewController {
     }
     
     public func clearSelectedCoreData(_ num: IndexPath){
-        items.remove(at: num.row)
+        if routeName == "Gubbholmen"{
+        GHitems.remove(at: num.row)
+        }
+        else if routeName == "Karlstad stadslopp"{
+            KSitems.remove(at: num.row)
+        }
         tableView.deleteRows(at: [num], with: .fade)
 
         let requestDel = NSFetchRequest<NSFetchRequestResult>(entityName: "Gubbholmen")
@@ -256,7 +276,13 @@ extension leaderboardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if routeName == "Gubbholmen" {
+        return GHitems.count
+        }
+        else {
+        return KSitems.count
+
+        }
     }
     
     

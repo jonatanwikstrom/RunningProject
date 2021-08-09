@@ -30,7 +30,6 @@ class thirdViewController: UIViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        saveRun()
         switchTabItem(tt: 0)
         loadViewIfNeeded()
 
@@ -46,11 +45,6 @@ class thirdViewController: UIViewController {
         
     }
     
-   
-    func saveRun(){
-        
-        
-    }
     
     func updateRun(){
         
